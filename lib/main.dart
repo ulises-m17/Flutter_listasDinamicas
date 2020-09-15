@@ -12,11 +12,6 @@ class MyApp extends StatelessWidget {
     "Dos",
     "Tres",
     "Cuatro",
-    "Cuatro",
-    "uno",
-    "Dos",
-    "Tres",
-    "Cuatro"
   ];
   final subtitulos = ["sub", "sub", "sub"];
 
@@ -31,12 +26,12 @@ class MyApp extends StatelessWidget {
             ),
             body: ListView(
               children:
-                  _listaDinamica(), // MANDAMOS LLAMAR AL WIDGET LISTTITLE QUE ESTA EN EL METODO LISTADINAMICA
+                  _Metodo_con_Map(), // MANDAMOS LLAMAR AL WIDGET LISTTITLE QUE ESTA EN EL METODO LISTADINAMICA
             )));
   }
 
 // CON ESTE METODO SE RECORRE LA LISTA DECLARA AL PRINCIPIO Y SE VA CREANDO EL WIDGET DE TIPO LIST CON SUS TITULOS
-
+/*
   List<Widget> _listaDinamica() {
     // DECLARAMOS UN METODO DE TIPO LIST WIGET PRIVADO _
 
@@ -55,5 +50,29 @@ class MyApp extends StatelessWidget {
         ));
     }
     return lista_mostrar; // RETORNAMOS LA NUEVA LISTA
+  }*/
+
+  List<Widget> _Metodo_con_Map() {
+    var titulo = titulos.map((elementos) {
+      return Column(
+        children: [
+          ListTile(
+            title: Text(elementos),
+            subtitle: Text(
+                "usamos el widget subtitulo"), // este widget agrega un subtitulo
+            trailing: Icon(Icons.adb), // agrega un icono al final
+            leading: Icon(Icons.assessment,
+                color: Colors.tealAccent), // agrega un icono al inicio
+            onTap: () => null, // agrega un metodo al hacer clic en la lista
+          ),
+          Divider(
+            // agrega un divisor para cada elemento
+            color: Colors.amber[300],
+            height: 25.2,
+          )
+        ],
+      );
+    }).toList();
+    return titulo;
   }
 }
